@@ -34,6 +34,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def upvote
+    @post = Post.find(params[:post_id])
+    current_rating = @post.upvote
+    @post.update(rating: current_rating)
+    redirect_to posts_path
+  end
+
+  def downvote
+    @post = Post.find(params[:post_id])
+    current_rating = @post.downvote
+    @post.update(rating: current_rating)
+    redirect_to posts_path
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

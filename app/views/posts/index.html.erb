@@ -3,7 +3,7 @@
 <h3>...now you will too</h3>
 
 <ul>
-  <% @posts.each do |post| %>
+  <% @posts.alphaAsc.each do |post| %>
     <li><%= link_to post.artist_name, post_path(post) %></li>
   <% end %>
 </ul>
