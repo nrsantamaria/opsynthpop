@@ -1,11 +1,45 @@
-<h1>OperaticSynthPop</h1>
-<h4>We know good music...</h4>
-<h3>...now you will too</h3>
+<div class="jumbotron">
+  <h1>OperaticSynthPop</h1>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/PWmfNeLs7fA" frameborder="0" allowfullscreen></iframe>
+  <h4>We know good music......now you will too</h4>
 
-<ul>
-  <% @posts.alphaAsc.each do |post| %>
-    <li><%= link_to post.artist_name, post_path(post) %></li>
-  <% end %>
-</ul>
+</div>
 
-<%= link_to "Create New Post", new_post_path %>
+<div class="row">
+  <div class="col-md-8">
+    <h3>All Posts</h3>
+    <ul>
+    
+      <% @posts.creationNew.each do |post| %>
+        <li><%= link_to post.artist_name, post_path(post) %></li>
+      <% end %>
+    </ul>
+    <%= link_to "Create New Post", new_post_path %>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Most Popular Posts</h3>
+    <ul>
+      <% @posts.highestRating.each do |post| %>
+        <li><%= link_to post.artist_name, post_path(post) %></li>
+      <% end %>
+    </ul>
+
+    <h3>Most Engaging Posts</h3>
+    <ul>
+      <% @posts.mostComments.each do |post| %>
+        <li><%= link_to post.artist_name, post_path(post) %></li>
+      <% end %>
+    </ul>
+
+    <h3>Start a Conversation</h3>
+    <p>these posts don't have any comments yet</p>
+    <ul>
+      <% @posts.leastComments.each do |post| %>
+        <li><%= link_to post.artist_name, post_path(post) %></li>
+      <% end %>
+    </ul>
+
+
+  </div>
+</div>

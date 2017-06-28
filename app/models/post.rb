@@ -8,20 +8,20 @@ class Post < ActiveRecord::Base
   scope :creationNew, -> { order(created_at: :desc)}
   scope :creationOld, -> { order(created_at: :asc)}
   scope :mostComments, -> {(
-    select("posts.id, posts.name, count(comments.id) as comments_count")
+    select("posts.id, posts.artist_name, count(comments.id) as comments_count")
       .joins(:comments)
       .group("posts.id")
       .order("comments_count DESC")
       .limit(5)
     )}
   scope :leastComments, -> {(
-    select("posts.id, posts.name, count(comments.id) as comments_count")
+    select("posts.id, posts.artist_name, count(comments.id) as comments_count")
       .joins(:comments)
       .group("posts.id")
       .order("comments_count ASC")
       .limit(5)
     )}
-  scope :highestRating, -> { order(rating: :desc)}
+  scope :highestRating, -> { order(rating: :desc).limit(5)}
 
   def upvote
     self.rating += 1
