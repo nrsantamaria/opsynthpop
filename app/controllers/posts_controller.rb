@@ -38,14 +38,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     current_rating = @post.upvote
     @post.update(rating: current_rating)
-    redirect_to posts_path
+    redirect_to (request.env['HTTP_REFERER'])
   end
 
   def downvote
     @post = Post.find(params[:post_id])
     current_rating = @post.downvote
     @post.update(rating: current_rating)
-    redirect_to posts_path
+    redirect_to (request.env['HTTP_REFERER'])
   end
 
   def destroy
