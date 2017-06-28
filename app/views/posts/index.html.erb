@@ -1,0 +1,11 @@
+<h1>OperaticSynthPop</h1>
+<h4>We know good music...</h4>
+<h3>...now you will too</h3>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= link_to post.artist_name, post_path(post) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create New Post", new_post_path %>

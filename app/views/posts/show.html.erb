@@ -1,0 +1,11 @@
+<h1><%= @post.artist_name %></h1>
+
+<p><%= @post.content %></p>
+
+<%= link_to "Edit this Post", edit_post_path(@post) %> | <%= link_to "Delete this Post", post_path(@post), :data => {
+      :confirm => "You sure you want to delete this post?",
+      :method => "delete" } %>
+<br>
+<hr>
+<br>
+<%= link_to "All Posts", posts_path %>
